@@ -1,5 +1,6 @@
 package  
 {
+	import components.EnemySpawner;
 	import flash.geom.Vector3D;
 	import gameObjects.*;
 	import nl.jorisdormans.phantom2D.cameras.CameraEase;
@@ -19,6 +20,7 @@ package
 	{
 		private var tiledObjectLayer:TiledObjectLayer;
 		private var player:GameObject;
+		public var enemySpawner:EnemySpawner;
 		public function GameScreen() 
 		{
 			addComponent(new Background(0x008000, 0x008000, 0x008000));
@@ -80,6 +82,8 @@ package
 			camera.addComponent(new FollowObject(player));
 			camera.addComponent(new CameraEase());
 			camera.addComponent(new RestrictToLayer(tiledObjectLayer));
+			
+			addComponent(enemySpawner = new EnemySpawner(tiledObjectLayer));
 			
 			addComponent(new Hud(player));
 			
