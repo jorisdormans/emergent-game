@@ -4,6 +4,7 @@ package components
 	import gameObjects.*;
 	import nl.jorisdormans.phantom2D.core.Component;
 	import nl.jorisdormans.phantom2D.objects.ObjectLayer;
+	import nl.jorisdormans.phantom2D.objects.TiledObjectLayer;
 	/**
 	 * ...
 	 * @author Silvan D Herrema
@@ -11,10 +12,10 @@ package components
 	public class EnemySpawner extends Component
 	{
 		private var timer:Number;
-		private var objectLayer:ObjectLayer;
+		private var objectLayer:TiledObjectLayer;
 		public var respawnRate:Number = 0;
 		
-		public function EnemySpawner(objectLayer:ObjectLayer) 
+		public function EnemySpawner(objectLayer:TiledObjectLayer) 
 		{
 			this.objectLayer = objectLayer;
 			timer = 0;
@@ -26,11 +27,11 @@ package components
 			timer -= elapsedTime;
 			if (timer < 0) {
 				spawn();
-				if (respawnRate > 40) 
+				if (respawnRate > 12) 
 				{
 					timer += 1;
 				} 
-				else timer += 12-respawnRate *0.3;
+				else timer += 12-respawnRate;
 			}
 		}
 		
@@ -38,7 +39,7 @@ package components
 		{
 			var x:Number = Math.random() * 1200;
 			var y:Number = Math.random() * 1200;
-			var enemy:Enemy = new Enemy();
+			var enemy:Enemy = new Enemy(objectLayer);
 			objectLayer.addGameObjectSorted(enemy, new Vector3D(y, x));
 		}
 		

@@ -19,7 +19,7 @@ package gameObjects
 			addComponent(new BoundingShapeRenderer(0xffb000));
 			addComponent(new EnergyPickUp(10));
 			addComponent(new Mover(new Vector3D()));
-			doResponse = false;
+			doResponse = true;
 		}
 		
 	}

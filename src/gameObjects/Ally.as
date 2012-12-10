@@ -28,7 +28,7 @@ package gameObjects
 			super.update(elapsedTime);
 			var dis:Number = Infinity;
 			var enemy:GameObject;
-			for each (var e:Player in objectLayer.getAllObjectsOfClass(Player)) {
+			for each (var e:Enemy in objectLayer.getAllObjectsOfClass(Enemy)) {
 				var epos:Vector3D = e.position.clone();
 				var edis:Number = epos.subtract(position).length;
 				if (edis < dis) {
@@ -37,6 +37,17 @@ package gameObjects
 				}
 			}
 			if (enemy && followComponent.target != enemy) followComponent.followGameObject(enemy);
+		}
+		
+		override public function afterCollisionWith(other:GameObject):void 
+		{
+			super.afterCollisionWith(other);
+			if (other is Enemy)
+			{
+				this.destroyed = true;
+				other.destroyed = true;
+				this.objectLayer.addGameObjectSorted(new Explode(), this.position.clone());
+			}
 		}
 		
 	}

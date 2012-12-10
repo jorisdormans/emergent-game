@@ -24,6 +24,21 @@ package gameObjects
 			addComponent(new Shield());
 		}
 		
+		override public function afterCollisionWith(other:GameObject):void 
+		{
+			super.afterCollisionWith(other);
+			if (other is Enemy)
+			{
+				var energy:Number = this.getProperty("energy") as Number;
+				if (energy >= 20)
+				{
+					handleMessage("increaseEnergy", -20);
+					other.destroyed = true;
+					this.objectLayer.addGameObjectSorted(new Ally(), other.position.clone());
+				}
+			}
+		}
+		
 	}
 
 }
