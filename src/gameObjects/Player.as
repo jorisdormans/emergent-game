@@ -21,6 +21,7 @@ package gameObjects
 			addComponent(new Mover(new Vector3D(), 2, 0.5));
 			addComponent(new ArrowKeyHandler(1000));
 			addComponent(new Energy(50, 100));
+			addComponent(new Shield());
 		}
 		
 	}

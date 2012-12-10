@@ -11,6 +11,7 @@ package
 	import nl.jorisdormans.phantom2D.objects.renderers.BoundingShapeRenderer;
 	import nl.jorisdormans.phantom2D.objects.shapes.BoundingCircle;
 	import nl.jorisdormans.phantom2D.objects.TiledObjectLayer;
+	import nl.jorisdormans.phantom2D.particles.ParticleLayer;
 	/**
 	 * ...
 	 * @author Joris Dormans
@@ -22,6 +23,7 @@ package
 		public function GameScreen() 
 		{
 			addComponent(new Background(0x008000, 0x008000, 0x008000));
+			addComponent(new ParticleLayer(800, 600, 500));
 			tiledObjectLayer = new TiledObjectLayer(40, 40, 30, 4);
 			tiledObjectLayer.createObjects( [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
 											 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
@@ -72,6 +74,13 @@ package
 				y = Math.random() * 28 + 1;
 				var pill:Pill = new Pill();
 				tiledObjectLayer.addGameObjectSorted(pill, new Vector3D(x * 40 + 20, y * 40 + 20));
+			}
+			
+			for (i = 0; i < 50; i++) {
+				x = Math.random() * 38 + 1;
+				y = Math.random() * 28 + 1;
+				var shieldPill:ShieldPill = new ShieldPill();
+				tiledObjectLayer.addGameObjectSorted(shieldPill, new Vector3D(x * 40 + 20, y * 40 + 20));
 			}
 			
 			addComponent(tiledObjectLayer);
