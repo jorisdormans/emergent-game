@@ -21,7 +21,7 @@ package components
 		private function activateShield(data:Object):void 
 		{
 			if(!activated) {
-				gameObject.addComponent(particleEmiter = new ParticleEmitter(Particle, 20, 0, 2, 0, 0.4, 10, 0.5));
+				gameObject.addComponent(particleEmiter = new ParticleEmitter(Particle, 15, 0, 1.5, 0.5, 0.4, 10, 0.5));
 			}
 			activated = true;
 			collisionsRest = data as Number;

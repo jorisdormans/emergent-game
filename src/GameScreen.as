@@ -23,7 +23,7 @@ package
 		public function GameScreen() 
 		{
 			addComponent(new Background(0x008000, 0x008000, 0x008000));
-			addComponent(new ParticleLayer(800, 600, 500));
+			addComponent(new ParticleLayer(1600, 1200, 500));
 			tiledObjectLayer = new TiledObjectLayer(40, 40, 30, 4);
 			tiledObjectLayer.createObjects( [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
 											 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
@@ -76,7 +76,7 @@ package
 				tiledObjectLayer.addGameObjectSorted(pill, new Vector3D(x * 40 + 20, y * 40 + 20));
 			}
 			
-			for (i = 0; i < 50; i++) {
+			for (i = 0; i < 20; i++) {
 				x = Math.random() * 38 + 1;
 				y = Math.random() * 28 + 1;
 				var shieldPill:ShieldPill = new ShieldPill();
